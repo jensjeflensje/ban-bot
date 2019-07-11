@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Gebruiker
+{% endblock title %}
+
+{% block content %}
+    <h1>Bans voor {{ name }}:</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Reden</th>
+                <th scope="col">Gebruiker</th>
+                <th scope="col">Gebruiker ID</th>
+                <th scope="col">Server</th>
+                <th scope="col">Server ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ban in bans %}
+                <tr>
+                    <td>{{ ban.reason }}</td>
+                    <td>{{ ban.user_name }}</td>
+                    <td>{{ ban.user_id }}</td>
+                    <td>{{ ban.server_name }}</td>
+                    <td>{{ ban.server_id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
 
 
@@ -21,3 +21,16 @@ def search_user(request, user_id):
     bans = models.Ban.objects.filter(user_id=user_id).all()
     context = {"bans": bans, "name": bans.last().user_name}
     return render(request, "search_user.html", context)
+
+
+def invite(request):
+    return redirect("https://discordapp.com/api/oauth2/authorize?client_id=598532712558624778&permissions=128&scope=bot")
+
+def discord(request):
+    return redirect("https://discord.gg/zDD8bNy")
+
+def maker(request):
+    return render(request, "maker.html")
+
+def bot(request):
+    return render(request, "bot.html")

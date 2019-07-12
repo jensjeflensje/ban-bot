@@ -3,10 +3,18 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ban_bot_panel.settings")
 import django
 django.setup()
 import discord
+import asyncio
 import config
 from app.models import Ban
 
 bot = discord.Client()
+
+
+async def change_status():
+    await bot.wait_until_ready()
+    while bot.is_logged_in:
+        await bot.change_presence(activity=discord.Game(name=f"{len(bot.guilds)} servers", status=discord.Status.online))
+        await asyncio.sleep(10)
 
 
 @bot.event
@@ -48,4 +56,6 @@ async def on_member_join(member):
     embed = discord.Embed(title=f"Bans voor {member.name}", description=bans_string)
     await guild.owner.send(embed=embed)
 
+
+bot.loop.create_task(change_status())
 bot.run(config.TOKEN)

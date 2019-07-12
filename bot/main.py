@@ -28,7 +28,7 @@ async def on_guild_join(guild):
             ban_reason = ""
             if ban.reason:
                 ban_reason = ban.reason
-            ban_obj = Ban(reason=ban.reason, user_name=ban.user.name, user_id=ban.user.id, server_name=guild.name,
+            ban_obj = Ban(reason=ban_reason, user_name=ban.user.name, user_id=ban.user.id, server_name=guild.name,
                           server_id=guild.id)
             ban_obj.save()
 

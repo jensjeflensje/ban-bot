@@ -25,8 +25,9 @@ async def on_guild_join(guild):
     for ban in bans:
         ban_obj = Ban.objects.filter(reason=ban.reason, user_id=ban.user.id, server_id=guild.id)
         if not ban_obj.exists():
-            if not ban.reason:
-                ban.reason = ""
+            ban_reason = ""
+            if ban.reason:
+                ban_reason = ban.reason
             ban_obj = Ban(reason=ban.reason, user_name=ban.user.name, user_id=ban.user.id, server_name=guild.name,
                           server_id=guild.id)
             ban_obj.save()

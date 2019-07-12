@@ -15,7 +15,7 @@ bot = discord.Client()
 async def change_status():
     await bot.wait_until_ready()
     while bot.is_logged_in:
-        await bot.change_presence(activity=discord.Game(name=f"{len(bot.guilds)} servers", status=discord.Status.online))
+        await bot.change_presence(game=discord.Game(name=f"{len(bot.servers)} servers", status=discord.Status.online))
         await asyncio.sleep(10)
 
 

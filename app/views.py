@@ -24,13 +24,16 @@ def search_user(request, user_id):
 
 
 def invite(request):
-    return redirect("https://discordapp.com/api/oauth2/authorize?client_id=598532712558624778&permissions=128&scope=bot")
+    return redirect("https://discordapp.com/api/oauth2/authorize?client_id=598532712558624778&permissions=8&scope=bot")
+
 
 def discord(request):
     return redirect("https://discord.gg/zDD8bNy")
 
+
 def maker(request):
     return render(request, "maker.html")
+
 
 def bot(request):
     return render(request, "bot.html")

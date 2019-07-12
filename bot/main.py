@@ -1,5 +1,7 @@
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ban_bot_panel.settings")
+import sys
+sys.path.append('../')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ban_bot_panel.settings')
 import django
 django.setup()
 import discord
